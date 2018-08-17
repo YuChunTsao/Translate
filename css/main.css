@@ -1,5 +1,5 @@
 body, html {
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 #inputText {
@@ -9,7 +9,7 @@ body, html {
 }
 
 #resultText {
-    margin-top: 50px;
+    margin-top: 30px;
     overflow: auto;
     height: 35vh;
 }

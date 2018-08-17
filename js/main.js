@@ -1,10 +1,25 @@
 window.onload = function() {
+    const selectElement = document.getElementsByClassName('goog-te-combo')[0];
+    triggerHtmlEvent(selectElement, 'change');
     removeTranslateElement();
 }
 
 function removeTranslateElement() {
-    $('.skiptranslate').remove();
+    $('.skiptranslate').hide();
     $('body').css({'top': '0px'});
+}
+
+function triggerHtmlEvent(element, eventName) {
+    var event;
+    if(document.createEvent) {
+        event = document.createEvent('HTMLEvents');
+        event.initEvent(eventName, true, true);
+        element.dispatchEvent(event);
+    } else {
+        event = document.createEventObject();
+        event.eventType = eventName;
+        element.fireEvent('on' + event.eventType, event);
+    } 
 }
 
 function inputListener() {
@@ -37,17 +52,4 @@ function copyResult() {
 function removeField() {
     $('#inputText').val('');
     $('#resultText').text('');
-}
-
-// warning alert
-function warningAlert(title, content) {
-	swal(title, content, "warning");
-}
-// error alert
-function errorAlert(title, content) {
-	swal(title, content, "error");
-}
-// success alert
-function successAlert(title, content) {
-	swal(title, content, "success");
 }
